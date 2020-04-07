@@ -13,7 +13,7 @@ namespace Inventaire
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class CustomerView : Window
+    public partial class CustomerView : Window, IClosable
     {
         
         public CustomerView(CustomersViewModel vm)
@@ -23,31 +23,17 @@ namespace Inventaire
             DataContext = vm;
         }
 
+        public event EventHandler CanExecuteChanged;
 
-        
-        
-        private void CustomerNew_Click(object sender, RoutedEventArgs e)
+        public bool CanExecute(object parameter)
         {
-            /*
-            Customer temp = new Customer() { Name = "Undefined", LastName = "Undefined" };
-            Customers.Add(temp);
-            SelectedCustomer = temp;  
-            */
+            throw new NotImplementedException();
         }
 
-        private void CustomerDelete_Click(object sender, RoutedEventArgs e)
+        public void Execute(object parameter)
         {
-            /*
-            int currentIndex = Customers.IndexOf(SelectedCustomer);
-
-            if (currentIndex > 0)
-                currentIndex--;
-
-            Customers.Remove(SelectedCustomer);
-
-            lvCustomers.SelectedIndex = currentIndex;
-            */
+            throw new NotImplementedException();
         }
-        
+
     }
 }

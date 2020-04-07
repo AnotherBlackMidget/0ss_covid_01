@@ -11,6 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\app_models\BillingManagement.Models.csproj" />
     <ProjectReference Include="..\BillingManagement.Business\BillingManagement.Business.csproj" />
   </ItemGroup>
