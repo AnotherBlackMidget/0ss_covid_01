@@ -134,6 +134,7 @@ namespace BillingManagement.Business
                     c.ContactInfos.Add(ci);
                 }
             }
+
         }
         public IEnumerable<Customer> GetAll()
         {

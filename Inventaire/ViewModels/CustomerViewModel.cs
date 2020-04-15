@@ -11,6 +11,7 @@ namespace BillingManagement.UI.ViewModels
 
         private ObservableCollection<Customer> customers;
         private Customer selectedCustomer;
+        private ObservableCollection<ContactInfo> contactInfos;
 
         public ObservableCollection<Customer> Customers
         {
@@ -28,6 +29,16 @@ namespace BillingManagement.UI.ViewModels
             set
             {
                 selectedCustomer = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ObservableCollection<ContactInfo> ContactInfos
+        {
+            get => selectedCustomer.ContactInfos;
+            private set
+            {
+                contactInfos = value;
                 OnPropertyChanged();
             }
         }

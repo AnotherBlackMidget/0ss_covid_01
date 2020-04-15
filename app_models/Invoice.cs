@@ -15,7 +15,7 @@ namespace BillingManagement.Models
         int InvoiceID;
         readonly DateTime CreationDateTime;
         Customer Customer;
-        Double SubTotal
+        public Double SubTotal
         {
             get => SubTotal;
             set

@@ -2,11 +2,12 @@
 using BillingManagement.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace BillingManagement.Business 
 {
-    class InvoicesDataService : IDataService<Invoice>
+    public class InvoicesDataService : IDataService<Invoice>
     {
         readonly List<Invoice> invoices;
 
