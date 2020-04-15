@@ -12,10 +12,10 @@ namespace BillingManagement.Models
         private static List<bool> UsedCounter = new List<bool>();
         private static object Lock = new object();
 
-        private int InvoiceID;
-        private DateTime CreationDateTime;
-        private Customer Customer;
-        private Double SubTotal
+        int InvoiceID;
+        readonly DateTime CreationDateTime;
+        Customer Customer;
+        Double SubTotal
         {
             get => SubTotal;
             set
@@ -26,12 +26,12 @@ namespace BillingManagement.Models
                 OnPropertyChanged();
             }
         }
-        private Double FedTax;
-        private Double ProvTax;
-        private Double Total;
-        
+        Double FedTax;
+        Double ProvTax;
+        Double Total;
 
-        Invoice()
+
+        public Invoice()
         {
             lock (Lock)
             {
@@ -48,7 +48,7 @@ namespace BillingManagement.Models
             CreationDateTime = DateTime.Now;
         }
 
-        Invoice(Customer cm)
+        public Invoice(Customer cm)
         {
             lock (Lock)
             {
