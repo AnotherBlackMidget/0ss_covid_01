@@ -18,17 +18,10 @@ namespace BillingManagement.UI.ViewModels
         private Customer selectedCustomer;
         private ObservableCollection<ContactInfo> contactInfos;
 
-        Boolean CustomerUserControlisEnabled { get; set; }
-        float CustomerUserControlOpacity { get;  set; }
-        Boolean InvoiceUserControlisEnabled { get;  set; }
-        float InvoiceUserControlOpacity { get;  set; }
-
 
         public RelayCommand CustomerDelete_Click { get; private set; }
         public RelayCommand CustomerNew_Click { get; private set; }
         public RelayCommand<IClosable> Exit_Click { get; private set; }
-        public RelayCommand SwitchView_Click { get; private set; }
-        Boolean Switch;
 
 
         public ObservableCollection<Customer> Customers
@@ -68,13 +61,6 @@ namespace BillingManagement.UI.ViewModels
             this.CustomerDelete_Click = new RelayCommand(this.CustomerDelete);
             this.CustomerNew_Click = new RelayCommand(this.CustomerNew);
             this.Exit_Click = new RelayCommand<IClosable>(this.Exit);
-            this.SwitchView_Click = new RelayCommand(this.SwitchView);
-
-            Switch = false;
-            CustomerUserControlisEnabled = true;
-            CustomerUserControlOpacity = 100;
-            InvoiceUserControlisEnabled = false;
-            InvoiceUserControlOpacity = 0;
 
         }
 
@@ -113,26 +99,5 @@ namespace BillingManagement.UI.ViewModels
             CloseWindow(window);
         }
 
-        private void SwitchView()
-        {
-            if(!Switch)
-            {
-                Switch = true;
-                CustomerUserControlisEnabled = false;
-                CustomerUserControlOpacity = 0;
-                InvoiceUserControlisEnabled = true;
-                InvoiceUserControlOpacity = 100;
-                OnPropertyChanged();
-            }
-            else
-            {
-                Switch = false;
-                CustomerUserControlisEnabled = true;
-                CustomerUserControlOpacity = 100;
-                InvoiceUserControlisEnabled = false;
-                InvoiceUserControlOpacity = 0;
-                OnPropertyChanged();
-            }
-        }
     }
 }

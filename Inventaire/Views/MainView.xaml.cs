@@ -11,15 +11,17 @@ namespace Inventaire
     /// </summary>
     public partial class MainView : Window, IClosable
     {
-        CustomerViewModel _vm;
+        CustomerViewModel _vm1;
+        InvoiceViewModel _vm2;
         
 
-        public MainView(CustomerViewModel vm)
+        public MainView(CustomerViewModel vm1, InvoiceViewModel vm2)
         {
             InitializeComponent();
 
-            _vm = vm;
-            DataContext = _vm;
+            _vm1 = vm1;
+            _vm2 = vm2;
+            DataContext = _vm1;
         }
 
 
@@ -41,6 +43,7 @@ namespace Inventaire
             viewCustomer.Visibility = Visibility.Visible;
             viewInvoice.IsEnabled = false;
             viewInvoice.Visibility = Visibility.Hidden;
+            DataContext = _vm1;
         }
 
         private void Invoice_Click(object sender, RoutedEventArgs e)
@@ -49,6 +52,7 @@ namespace Inventaire
             viewCustomer.Visibility = Visibility.Hidden;
             viewInvoice.IsEnabled = true;
             viewInvoice.Visibility = Visibility.Visible;
+            DataContext = _vm2;
         }
     }
 }

@@ -12,9 +12,10 @@ namespace Inventaire
 
         public App()
         {
-            CustomerViewModel vm = new CustomerViewModel();
+            CustomerViewModel vm1 = new CustomerViewModel();
+            InvoiceViewModel vm2 = new InvoiceViewModel();
 
-            _window = new MainView(vm);
+            _window = new MainView(vm1, vm2);
 
             _window.Show();
         }

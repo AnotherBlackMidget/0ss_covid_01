@@ -11,6 +11,28 @@ namespace BillingManagement.Business
     {
         readonly List<Invoice> invoices;
 
+        public InvoicesDataService()
+        {
+            invoices = new List<Invoice>()
+            {
+                new Invoice() {},
+                new Invoice() {},
+                new Invoice() {},
+                new Invoice() {},
+                new Invoice() {},
+                new Invoice() {},
+                new Invoice() {},
+                new Invoice() {},
+                new Invoice() {},
+                new Invoice() {},
+                new Invoice() {},
+                new Invoice() {},
+                new Invoice() {},
+                new Invoice() {},
+                new Invoice() {},
+                new Invoice() {}
+            };
+        }
 
         public IEnumerable<Invoice> GetAll()
         {

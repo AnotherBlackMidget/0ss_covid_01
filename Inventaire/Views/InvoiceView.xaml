@@ -7,6 +7,82 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Margin="6" Orientation="Horizontal" x:Name="spHeader">
+                <TextBlock Text="Liste des factures" />
+            </StackPanel>
+            <ListView Grid.Row="1" ItemsSource="{Binding Invoices}"
+                          SelectedItem="{Binding SelectedInvoice}"
+                          >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Info}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+        <Grid Grid.Column="1" Margin="6">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{Binding ElementName=spHeader,Path=ActualHeight}"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Margin="3">
+                <TextBlock Text="ID :" Width="75"/>
+                <TextBox MinWidth="125" Text="{Binding SelectedInvoice.InvoiceID}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="1" 
+                            Orientation="Horizontal" Margin="3"/>
+            <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" 
+                            Orientation="Horizontal" Margin="3" >
+                <TextBlock Text="Date :" Width="75"/>
+                <TextBox MinWidth="250" Text="{Binding SelectedInvoice.CreationDateTime}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="3" Grid.Column="0"
+                            Orientation="Horizontal" Margin="3" >
+                <TextBlock Text="Client :" Width="75"/>
+                <TextBox MinWidth="175" Text="{Binding SelectedInvoice.Customer.Name}"/>
+            </StackPanel>
             
+            <StackPanel Grid.Row="4" Grid.Column="0" 
+                            Orientation="Horizontal" Margin="3">
+                <TextBlock Text="Sous Total :" Width="75"/>
+                <TextBox MinWidth="70" Text="{Binding SelectedInvoice.SousTotal}"/>
+                <TextBlock Text="TPS :" Width="35"/>
+                <TextBox MinWidth="70" Text="{Binding SelectedInvoice.FedTax}"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+                            Orientation="Horizontal" Margin="3">
+                <TextBlock Text="TVQ :" Width="75"/>
+                <TextBox MinWidth="70" Text="{Binding SelectedInvoice.ProvTax}"/>
+                <TextBlock Text="Total :" Width="35"/>
+                <TextBox MinWidth="70" Text="{Binding SelectedInvoice.Total}"/>
+
+
+            </StackPanel>
+            <StackPanel Grid.Row="6" Grid.Column="2" Margin="6">
+                <Button Content="Supprimer cette facture" Command="{Binding InvoiceDelete_Click, Mode=OneWay}"/>
+            </StackPanel>
+            
+        </Grid>
     </Grid>
 </UserControl>
