@@ -31,6 +31,10 @@
                     <MenuItem Header="Clients" Click="Customer_Click"/>
                     <MenuItem Header="Factures" Click="Invoice_Click"/>
                 </MenuItem>
+                <MenuItem Header="Enregistrement" >
+                    <MenuItem Header="Clients" Click="Customer_Click"/>
+                    <MenuItem Header="Factures" Click="Invoice_Click"/>
+                </MenuItem>
             </Menu>
         </StackPanel>
         <ToolBar DockPanel.Dock="Top">
