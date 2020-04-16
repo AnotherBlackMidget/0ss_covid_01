@@ -33,4 +33,8 @@
     <Folder Include="Dictionaries\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
+  </ItemGroup>
+
 </Project>
