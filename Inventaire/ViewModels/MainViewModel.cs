@@ -22,18 +22,22 @@ namespace BillingManagement.UI.ViewModels
 		CustomerViewModel customerViewModel;
 		InvoiceViewModel invoiceViewModel;
 
-		public ChangeViewCommand ChangeViewCommand { get; set; }
+		public RelayComand ChangeViewCommand { get; set; }
 		public RelayCommand NewCustomerCommand { get; private set; }
+		public RelayCommand NewInvoiceCommand { get; private set; }
 		public RelayCommand DisplayInvoiceCommand { get; private set; }
 		public RelayCommand DisplayCustomerCommand { get; private set; }
 
+
 		public MainViewModel()
 		{
-			ChangeViewCommand = new ChangeViewCommand(ChangeView);
+			ChangeViewCommand = new RelayCommand(ChangeView);
+
 			NewCustomerCommand = new RelayCommand(NewCustomer);
+			NewInvoiceCommand = new RelayCommand(NewInvoice, CanExecuteNewInvoice);
 
 			DisplayInvoiceCommand = new RelayCommand(DisplayInvoice);
-			DisplayCustomerCommand = new RelayCommand(DisplayCustomer);
+			DisplayCustomerCommand = new RelayCommand(DisplayCustomer, CanExecuteDisplayCustomer);
 
 			customerViewModel = new CustomerViewModel();
 			invoiceViewModel = new InvoiceViewModel(customerViewModel.Customers);
@@ -42,9 +46,9 @@ namespace BillingManagement.UI.ViewModels
 
 		}
 
-		private void ChangeView(string vm)
+		private void ChangeView(object vm)
 		{
-			switch (vm)
+			switch ((String) vm)
 			{
 				case "customers":
 					VM = customerViewModel;
@@ -60,9 +64,18 @@ namespace BillingManagement.UI.ViewModels
 			Customer customer = new Customer();
 
 			customerViewModel.Customers.Add(customer);
-			customerViewModel.SelectedCustomer = customer;
 
-			VM = customerViewModel;
+			DisplayCustomer(customer);
+		}
+
+		private void NewInvoice(object c)
+		{
+			var customer = (Customer)c;
+			var invoice = new Invoice(customer);
+
+			customer.Invoices.Add(invoice);
+
+			DisplayInvoice(invoice);
 		}
 
 
@@ -75,14 +88,30 @@ namespace BillingManagement.UI.ViewModels
 
 		}
 
+		private bool CanExecuteDisplayCustomer(object c)
+		{
+			if (c == null) return false;
+			else return true;
+		}
+
 		private void DisplayInvoice(object i)
 		{
 			Invoice invoice = (Invoice)i;
 
 			invoiceViewModel.SelectedInvoice = invoice;
 			VM = invoiceViewModel;
-
 		}
 
+		private bool CanExecuteDisplayInvoice(object i)
+		{
+			if (i == null) return false;
+			else return true;
+		}
+
+		private bool CanExecuteNewInvoice(object c)
+		{
+			if (c == null) return false;
+			else return true;
+		}
 	}
 }

@@ -60,7 +60,7 @@ namespace BillingManagement.UI.ViewModels
 
             SelectedCustomer = Customers[currentIndex];
 
-            Customers.Remove(customer));
+            Customers.Remove(customer);
         }
 
         private bool CanDeleteCustomer(object c)
